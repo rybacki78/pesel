@@ -72,14 +72,14 @@ def months(mm: str) -> tuple:
     }
 
     if mm in months_31:
-        return (True, months_31[mm], "long")
+        return True, months_31[mm], "long"
     elif mm in months_30:
-        return (True, months_30[mm], "short")
+        return True, months_30[mm], "short"
     elif mm in months_feb:
-        return (True, months_feb[mm], "feb")
+        return True, months_feb[mm], "feb"
     else:
         print(f"Month number ({mm}) is not correct.")
-        return (False, "", "")
+        return False, "", ""
 
 
 # main loop
@@ -98,10 +98,11 @@ while True:
 
     # checking month
     month_correct, month_name, month_length = months(month_slice)
-    if month_correct != True:
+    if not month_correct:
         continue
 
     # converting two first digits to four-digit year
+    year = int()
     if 81 <= int(month_slice) <= 92:
         year = 1800 + int(year_slice)
     elif 1 <= int(month_slice) <= 12:
